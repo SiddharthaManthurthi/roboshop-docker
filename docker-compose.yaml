@@ -28,7 +28,22 @@ services:
     depends_on:
     - mysql
     - cart
-    
+  payment:
+    build: ./payment
+    image: joindevops/payment:1.0.0
+    container_name: payment
+    environment:
+      CART_HOST: "cart"
+      CART_PORT: "8080"
+      USER_HOST: "user"
+      USER_PORT: "8080"
+      AMQP_HOST: "rabbitmq"
+      AMQP_USER: "roboshop"
+      AMQP_PASS: "roboshop123"
+    depends_on:
+    - rabbitmq
+    - cart
+    - user
   frontend:
     build: ./frontend
     image: joindevops/frontend:1.0.0
@@ -40,6 +55,7 @@ services:
     - user
     - cart 
     - shipping
+    - payment
   mongodb:
     build: ./mongodb # it moves to mongodb directory
     image: joindevops/mongodb:1.0.0 # docker build -t joindevops/mongodb:1.0.0
@@ -53,7 +69,7 @@ services:
     build: ./mysql
     image: joindevops/mysql:1.0.0
     container_name: mysql
-    
+
   rabbitmq:
     image: rabbitmq:3
     environment: 
