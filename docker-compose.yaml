@@ -1,21 +1,21 @@
 services:
   catalogue:
     build: ./catalogue
-    image: joindevops/catalogue:1.0.0
+    image: siddhartha1122/catalogue:1.0.0
     container_name: catalogue
     depends_on:
     - mongodb
 
   user:
     build: ./user
-    image: joindevops/user:1.0.0
+    image: siddhartha1122/user:1.0.0
     container_name: user
     depends_on:
     - redis
     - mongodb
   cart:
     build: ./cart
-    image: joindevops/cart:1.0.0
+    image: siddhartha1122/cart:1.0.0
     container_name: cart
     depends_on:
     - redis
@@ -23,14 +23,14 @@ services:
 
   shipping:
     build: ./shipping
-    image: joindevops/shipping:1.0.0
+    image: siddhartha1122/shipping:1.0.0
     container_name: shipping
     depends_on:
     - mysql
     - cart
   payment:
     build: ./payment
-    image: joindevops/payment:1.0.0
+    image: siddhartha1122/payment:1.0.0
     container_name: payment
     environment:
       CART_HOST: "cart"
@@ -46,7 +46,7 @@ services:
     - user
   frontend:
     build: ./frontend
-    image: joindevops/frontend:1.0.0
+    image: siddhartha1122/frontend:1.0.0
     container_name: frontend
     ports:
     - "80:80"
@@ -58,7 +58,7 @@ services:
     - payment
   mongodb:
     build: ./mongodb # it moves to mongodb directory
-    image: joindevops/mongodb:1.0.0 # docker build -t joindevops/mongodb:1.0.0
+    image: siddhartha1122/mongodb:1.0.0 # docker build -t siddhartha1122/mongodb:1.0.0
     container_name: mongodb
 
   redis:
@@ -67,7 +67,7 @@ services:
 
   mysql:
     build: ./mysql
-    image: joindevops/mysql:1.0.0
+    image: siddhartha1122/mysql:1.0.0
     container_name: mysql
 
   rabbitmq:
