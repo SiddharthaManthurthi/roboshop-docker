@@ -60,20 +60,20 @@ services:
     build: ./mongodb # it moves to mongodb directory
     image: siddhartha1122/mongodb:1.0.0 # docker build -t siddhartha1122/mongodb:1.0.0
     container_name: mongodb
-    volumes::
+    volumes:
     - mongodb:/data/db
 
   redis:
     image: redis:7.0
     container_name: redis
-    volumes::
+    volumes:
     - redis:/data
 
   mysql:
     build: ./mysql
     image: siddhartha1122/mysql:1.0.0
     container_name: mysql
-    volumes::
+    volumes:
     - mysql:/var/lib/mysql
 
   rabbitmq:
