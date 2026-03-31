@@ -60,20 +60,20 @@ services:
     build: ./mongodb # it moves to mongodb directory
     image: siddhartha1122/mongodb:1.0.0 # docker build -t siddhartha1122/mongodb:1.0.0
     container_name: mongodb
-    voulmes:
+    volumes::
     - mongodb:/data/db
 
   redis:
     image: redis:7.0
     container_name: redis
-    voulmes:
+    volumes::
     - redis:/data
 
   mysql:
     build: ./mysql
     image: siddhartha1122/mysql:1.0.0
     container_name: mysql
-    voulmes:
+    volumes::
     - mysql:/var/lib/mysql
 
   rabbitmq:
@@ -82,7 +82,7 @@ services:
       RABBITMQ_DEFAULT_USER: roboshop
       RABBITMQ_DEFAULT_PASS: roboshop123
     container_name: rabbitmq
-    voulmes:
+    volumes:
     - rabbitmq:/var/lib/rabbitmq
 
 networks:
